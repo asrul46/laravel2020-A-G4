@@ -60,8 +60,12 @@
                       
                         </table>
                 </div>
+                <div class="ml-3">
+                    {{$gudang->links()}}
+                </div>
+               
             </div>
-                {{$gudang->links()}}
+                
         </div>
     </div>
 </div>

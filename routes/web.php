@@ -24,3 +24,7 @@ Route::resource('gudang', 'GudangController');
 Route::post('gudang/pencarian', 'GudangController@cari')->name('gudang.pencarian');
 
 Route::get('/gudang', 'WebController@gudang');
+
+Route::resource('suppliers', 'SupplierController');
+Route::post('suppliers/pencarian', 'SupplierController@cari')->name('suppliers.pencarian');
+

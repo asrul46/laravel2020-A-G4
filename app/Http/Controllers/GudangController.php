@@ -65,7 +65,8 @@ class GudangController extends Controller
     public function edit($id)
     {
         $gudang=Gudang::findOrFail($id);
-        return view('gudang.edit',compact('gudang'));
+        $supplier = Supplier::all();
+        return view('gudang.edit',compact('gudang','supplier'));
 
     }
 

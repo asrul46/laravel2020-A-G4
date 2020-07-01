@@ -62,7 +62,17 @@
                             <div class="col-md-6">
                                 <!-- <input id="supplier" value="{{$gudang['supplier']}}" type="text" class="form-control{{ $errors->has('supplier') ? ' is-invalid' : '' }}" name="supplier" value="{{ old('supplier') }}" required> -->
                                 <select name="supplier_id" id="supplier_id"  class="form-control{{ $errors->has('supplier_id') ? ' is-invalid' : '' }}">
-                                    <option value="{{ $gudang->supplier->id }}">{{ $gudang->supplier->nama_supplier }}</option>
+                                    <!-- <option value="{{ $gudang->supplier->id }}">
+                                        {{ $gudang->supplier->nama_supplier }}
+                                    </option> -->
+                                    @foreach($supplier as $item)
+                                        <option value="{{$item->id}}" 
+                                        @if ($gudang->supplier_id == $item->id)
+                                            selected
+                                        @endif >
+                                        {{ $item->nama_supplier }}</option>
+                                    @endforeach
+
                                 </select>
                                 @if ($errors->has('supplier'))
                                     <span class="invalid-feedback" role="alert">

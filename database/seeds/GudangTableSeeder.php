@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Faker\Factory as Faker;
+
 
 class GudangTableSeeder extends Seeder
 {
@@ -11,32 +14,20 @@ class GudangTableSeeder extends Seeder
      */
     public function run()
     {
-        $gudang=[
-            [
-                'nama_barang'=>'Tepung',
-                'merk'=>'Rosebrand',
-                'jumlah_barang'=>'100',
-                'supplier_id'=>1,
-                'harga'=>'500000',
+      
 
-            ],
-            [
-                'nama_barang'=>'Air mineral botol',
-                'merk'=>'Aqua',
-                'jumlah_barang'=>'100',
-                'supplier_id'=> 2,
-                'harga'=>'300000',
+        $faker = Faker::create('id_ID');
+        
+        for($i = 1; $i <= 25; $i++){
 
-            ],
-            [
-                'nama_barang'=>'Beras',
-                'merk'=>'Raja lele',
-                'jumlah_barang'=>'100',
-                'supplier_id'=>3,
-                'harga'=>'500000',
+            DB::table('gudang')->insert([ 
 
-            ],
-        ];
-        DB::table('gudang')->insert($gudang);
+                'nama_barang'=>$faker->randomElement(['Aqua Mineral','Susu Bubuk','Tepung Terigu','Beras','Minyak Goreng']),
+                'merk'=>$faker->randomElement(['Adi','Dancow','Rosebrand','Rojo Lele','Bimoli']),
+                'jumlah_barang'=>$faker->numberBetween(50,100),
+                'supplier_id'=>$faker->randomElement(['1','2','3','4','5','6']),
+                'harga'=>$faker->numberBetween(50000,500000),
+            ]);
+        }
     }
 }
